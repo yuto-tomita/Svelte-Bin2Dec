@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte'
-	export let value: '0' | '1' = '0'
+	export let value: '0' | '1' | null = null
 	export let forcusFormId = 0
 	export let formId = 0
 
 	let input
 	const dispatch = createEventDispatcher()
 
+	// TODO: backspaceの入力を検知したら左のフォームにフォーカスを当てるようにする
 	const onInput = (e: Event & {
     currentTarget: EventTarget & HTMLInputElement
 	}) => {
@@ -36,8 +37,6 @@
 	maxlength="1"
 	bind:this={input}
 >
-{formId}
-{forcusFormId}
 <style>
 	.input {
 		width: 80px;

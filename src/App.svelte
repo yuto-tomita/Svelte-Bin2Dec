@@ -1,7 +1,7 @@
 <script lang="ts">
   import Input from './components/Form/Input.svelte'
   
-  type BinaryNumber = '0' | '1'
+  type BinaryNumber = '0' | '1' | null
   export let inputNumbers: BinaryNumber[] = [null, null, null, null, null]
   export let forcusFormId
 
@@ -9,6 +9,7 @@
     forcusFormId = event.detail + 1
   }
 
+  // TODO: 独自の基数変換ロジックも書く
   $: decimalNumber = () => {
     let coalescenceNumbers = ''
     inputNumbers.forEach(val => {
