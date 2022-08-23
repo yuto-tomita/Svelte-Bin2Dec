@@ -29,36 +29,14 @@
   </div>
 
   <div class="form-container">
-    <Input
-      bind:value={inputNumbers[0]}
-      formId={0}
-      forcusFormId={forcusFormId}
-      on:onInput={focusNextForm}
-    />
-    <Input
-      bind:value={inputNumbers[1]}
-      formId={1}
-      forcusFormId={forcusFormId}
-      on:onInput={focusNextForm}
-    />
-    <Input
-      bind:value={inputNumbers[2]}
-      formId={2}
-      forcusFormId={forcusFormId}
-      on:onInput={focusNextForm}
-    />
-    <Input
-      bind:value={inputNumbers[3]}
-      formId={3}
-      forcusFormId={forcusFormId}
-      on:onInput={focusNextForm}
-    />
-    <Input
-      bind:value={inputNumbers[4]}
-      formId={4}
-      forcusFormId={forcusFormId}
-      on:onInput={focusNextForm}
-    />
+    {#each [...Array(5)] as input, i}
+      <Input
+        bind:value={inputNumbers[i]}
+        formId={i}
+        forcusFormId={forcusFormId}
+        on:onInput={focusNextForm}
+      />
+    {/each}
   </div>
 
   Result

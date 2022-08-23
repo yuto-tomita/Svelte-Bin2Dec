@@ -8,6 +8,7 @@
 	const dispatch = createEventDispatcher()
 
 	// TODO: backspaceの入力を検知したら左のフォームにフォーカスを当てるようにする
+	// TODO: 入力制御も書く
 	const onInput = (e: Event & {
     currentTarget: EventTarget & HTMLInputElement
 	}) => {
