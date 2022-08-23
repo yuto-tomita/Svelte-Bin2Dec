@@ -1,45 +1,84 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import Counter from './lib/Counter.svelte'
+  import Input from './components/Form/Input.svelte'
+  
+  type BinaryNumber = '0' | '1'
+  export let inputNumbers: BinaryNumber[] = [null, null, null, null, null]
+  export let forcusFormId
+
+  const focusNextForm = (event) => {
+    forcusFormId = event.detail + 1
+  }
+
+  $: decimalNumber = () => {
+    let coalescenceNumbers = ''
+    inputNumbers.forEach(val => {
+      coalescenceNumbers = coalescenceNumbers + val
+    })
+    return parseInt(coalescenceNumbers, 2)
+  }
 </script>
 
 <main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank"> 
-      <img src="/vite.svg" class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank"> 
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
+  <h1 class="main-title">
+    Bin2Dec
+  </h1>
 
-  <div class="card">
-    <Counter />
+  <div class="form-label">
+    Please enter binary numbers
   </div>
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
+  <div class="form-container">
+    <Input
+      bind:value={inputNumbers[0]}
+      formId={0}
+      forcusFormId={forcusFormId}
+      on:onInput={focusNextForm}
+    />
+    <Input
+      bind:value={inputNumbers[1]}
+      formId={1}
+      forcusFormId={forcusFormId}
+      on:onInput={focusNextForm}
+    />
+    <Input
+      bind:value={inputNumbers[2]}
+      formId={2}
+      forcusFormId={forcusFormId}
+      on:onInput={focusNextForm}
+    />
+    <Input
+      bind:value={inputNumbers[3]}
+      formId={3}
+      forcusFormId={forcusFormId}
+      on:onInput={focusNextForm}
+    />
+    <Input
+      bind:value={inputNumbers[4]}
+      formId={4}
+      forcusFormId={forcusFormId}
+      on:onInput={focusNextForm}
+    />
+  </div>
 
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
+  Result
+
+  {decimalNumber()}
 </main>
 
 <style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
+.main-title {
+  text-align: center;
+  font-size: 2.5rem;
+}
+
+.form-label {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.form-container {
+  text-align: center;
+}
 </style>
