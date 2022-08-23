@@ -15,8 +15,6 @@
 
 		if (String(targetValue) === '0' || String(targetValue) === '1') {
 			value = String(targetValue) as '0'| '1'
-		} else {
-			value = null
 		}
 		dispatch('onInput', formId)
 	}
